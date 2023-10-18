@@ -65,7 +65,7 @@ float C8_master::ReadCO2() {
 
         if(sizeof(_buffer) > 0 ){
             
-            //Issue https://github.com/Jaron0211/C8_master/issues/1#issue-1931603183
+            //Issue #1 https://github.com/Jaron0211/C8_master/issues/1#issue-1931603183
             String _head_str = "";
             _head_str += char(0x42);
             _head_str += char(0x4D);
