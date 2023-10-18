@@ -64,8 +64,15 @@ float C8_master::ReadCO2() {
         }
 
         if(sizeof(_buffer) > 0 ){
+            
+            //Issue https://github.com/Jaron0211/C8_master/issues/1#issue-1931603183
+            String _head_str = "";
+            _head_str += char(0x42);
+            _head_str += char(0x4D);
+            _head_str += char(0x0C);
+            _head_str += char(0x51);
+            int header_index = _buffer.indexOf(_head_str);
 
-            int header_index = _buffer.indexOf(char(0x42)+char(0x4D)+char(0x0C)+char(0x51));
             if (sizeof(_buffer) - header_index >= 16 ){
                 for (int index = header_index; index < (16+header_index); index++){
                     raw_data[index-header_index] = _buffer[index];
